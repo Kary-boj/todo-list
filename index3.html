@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+    <header>
+        <button class="logout" onclick="location".href='index1.html'>Logout</button>
+        <div class="nav-buttons">
+            <button class="home">Home</button>
+            <button class="profile" onclick="location.href='index6.html'">Profile</button>
+        </div>
+    </header>
+
+    <h1 class="logo">ToDo List</h1>
+
+    <div class="container">
+        <div class="left-section">
+            <div class="first-box">
+                <h2>To-Do List</h2>
+                <div class="todo-header">
+                    <p>Description</p>
+                    <div>
+                        <button class="add">Add</button>
+                        <button class="remove">Remove</button>
+                    </div>
+                </div>
+                <input type="text" placeholder="Write what you want to do...">
+                <div class="formatting">
+                    <select><option>Font</option></select>
+                    <select><option>Alignment</option></select>
+                    <select><option>Decoration</option></select>
+                </div>
+            </div>
+
+            <div class="second-box">
+                <p>Edit-Task</p>
+                <textarea placeholder="Describe what you will do today..."></textarea>
+                <button class="Done">Done</button>
+            </div>
+        </div>
+
+        <div class="right-section">
+            <div class="third-box">
+                <p>To-Do List (Today)</p>
+                <button class="add-task">+Add</button>
+                <hr>
+                <div class="filters">
+                    <button class="all" onclick="location.href='index3.html'">All</button>
+                    <button class="completed" onclick="location.href='index4.html'">Completed</button>
+                    <button class="later" onclick="location.href='index5.html'">Later</button>
+                </div>
+                <ul class="task-list">
+                    <li class="completed">
+                        <span class="task-text">Example Task 1</span>
+                        <span class="star green">★</span>
+                        <button class="edit">Edit</button>
+                    </li>
+                    <li>
+                        <span class="task-text">Example Task 2</span>
+                        <span class="star">☆</span>
+                        <button class="edit">Edit</button>
+                    </li>
+                </ul>
+            </div>
+            <!-- Task counters section -->
+        <div class="task-counters">
+            <p>Total Tasks: <span id="totalTasks">0</span></p>
+            <p>Completed Tasks: <span id="completedTasks">0</span></p>
+            <p>Later Tasks: <span id="laterTasks">0</span></p>
+        </div>
+        </div>
+        </div>
+    </div>
+    <script src="script3.js"></script>
+</body>
+</html>
+

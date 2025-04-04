@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="style6.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav class="nav-bar">
+            <button class="logout">Logout</button>
+            <div class="nav-buttons">
+                <button class="home" onclick="location.href='index3.html'">Home</button>
+                <button class="active">Profile</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        
+        <!-- Left Section: Profile & Logo -->
+        <section class="left-section">
+            <h1 class="logo">ToDo List</h1>
+            <div class="profile-picture">
+                <img src="./assets/3.png" alt="Your Profile Picture">
+            </div>
+        </section>
+
+        <!-- Right Section: User Info & Hidden Menu -->
+        <section class="right-section">
+            <button class="menu-btn" onclick="toggleMenu()">☰</button>
+            <aside id="menu" class="menu">
+                <button class="logout">Logout</button>
+                <button>Settings</button>
+            </aside>
+
+            <div class="user-info">
+                <h3>My Information</h3>
+                <p><strong>Username:</strong> <span id="username">YourName</span></p>
+                <p><strong>Email:</strong> <span id="email">yourname@gmail.com</span></p>
+                <a href="#" class="change-password">Change My Password</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Social Media Links -->
+    <footer class="socials">
+        <a href="#"><img src="./assets/ic_facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="./assets/ic_instagram.png" alt="Instagram"></a>
+        <a href="#"><img src="./assets/ic_twitter.png" alt="Twitter"></a>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        function toggleMenu() {
+            let menu = document.getElementById("menu");
+            menu.style.display = (menu.style.display === "block") ? "none" : "block";
+        }
+    </script>
+
+</body>
+</html>
+

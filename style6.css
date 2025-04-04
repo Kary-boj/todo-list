@@ -1,0 +1,266 @@
+/* General Page Styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: url(./assets/Karima.jpg) no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header Styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* Navigation Bar */
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.logout {
+    background-color: beige;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.logout:hover {
+    background-color: rgb(243, 243, 174);
+}
+
+.nav-buttons button {
+    background-color: #add8e6;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+button.active {
+    background-color: #66d9ff;
+}
+
+/* Layout Styling */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    padding: 40px;
+}
+
+/* Left Section: Logo & Profile Picture */
+.left-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+}
+
+h1.logo {
+    font-size: 60px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-picture img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 5px solid #f8c8dc;
+}
+
+/* Right Section: User Info */
+.right-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+}
+
+/* User Info Box */
+.user-info {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    width: 350px;
+    text-align: center;
+    
+}
+
+.user-info h3 {
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+/* Styled Username & Email Fields */
+.user-info p {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    color: black;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    border: 2px solid #add8e6;
+    margin-bottom: 10px;
+}
+
+.user-info p span {
+    background-color: #add8e6;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-weight: normal;
+}
+
+/* "Change My Password" Link */
+.change-password {
+    color: white;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* Menu Button Below Header (Top Right) */
+.menu {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border-radius: 10px;
+    display: none;
+}
+
+.menu button {
+    display: block;
+    margin: 5px 0;
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Menu Button Below Profile Button */
+.menu-btn {
+    background: none;
+    font-size: 24px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 50px;
+    right: 20px;
+}
+
+/* Footer: Social Media Box */
+footer.socials {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 12px;
+    width: fit-content;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+.socials a img {
+    width: 35px;
+    height: 35px;
+    margin: 0 5px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+@media (max-width: 768px) {
+    /* Ensure body is column layout */
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Center the Logo */
+    h1.logo {
+        text-align: center;
+        font-size: 2.5em;
+        margin-top: 20px;
+    }
+
+    /* Profile Picture centered */
+    .profile-picture {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 2;
+    }
+
+    /* Background Image only behind the profile picture */
+    body::before {
+        content: "";
+        position: absolute;
+        top: 80px;
+        left: 0;
+        height: 280px;
+        width: 100%;
+        background: url(./assets/Karima.jpg) no-repeat center top;
+        background-size: cover;
+        z-index: 1;
+    }
+
+    /* User Info Box below the image */
+    .user-info {
+        position: static;
+        transform: none;
+        width: 90%;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    /* Center all content */
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    /* Socials at the bottom, centered */
+    footer.socials {
+        position: static;
+        margin-top: 20px;
+        text-align: center;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .socials a img {
+        width: 40px;
+        height: 40px;
+    }
+}

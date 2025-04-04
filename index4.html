@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completed Tasks</title>
+    <link rel="stylesheet" href="style4.css">
+</head>
+<body>
+    <header>
+        <button class="logout">Logout</button>
+        <button class="turn-back" onclick="location.href='index3.html'">Turn back</button>
+        <div class="nav-buttons">
+            <button class="home" onclick="location.href='index3.html'">Home</button>
+            <button class="profile" onclick="location.href='index6.html'">Profile</button>
+        </div>
+    </header>
+    <div class="container">
+        <!-- Right Section for Task List -->
+        <section class="right-section">
+            <h1 class="logo">Completed Tasks</h1>
+            <button class="add-task">+Add</button>
+            <hr>
+            <ul class="task-list">
+                <li class="completed">
+                    <span class="task-text">Example Task 1</span>
+                    <span class="star green">★</span>
+                    <button class="edit">Edit</button>
+                </li>
+                <li class="completed">
+                    <span class="task-text">Example Task 2</span>
+                    <span class="star green">★</span>
+                    <button class="edit">Edit</button>
+                </li>
+                <li class="completed">
+                    <span class="task-text">Example Task 3</span>
+                    <span class="star green">★</span>
+                    <button class="edit">Edit</button>
+                </li>
+                <li class="completed">
+                    <span class="task-text">Example Task 4</span>
+                    <span class="star green">★</span>
+                    <button class="edit">Edit</button>
+                </li>
+            </ul>
+        </section>
+        
+        <!-- Left Section containing First and Second Boxes -->
+        <section class="left-section">
+            <div class="first-box">
+                <h2>To-Do List</h2>
+                <div class="todo-header">
+                    <p>Description</p>
+                    <div>
+                        <button class="add">Add</button>
+                        <button class="remove">Remove</button>
+                    </div>
+                </div>
+                <input type="text" placeholder="Write what you want to do...">
+                <div class="formatting">
+                    <select><option>Font</option></select>
+                    <select><option>Alignment</option></select>
+                    <select><option>Decoration</option></select>
+                </div>
+            </div>
+
+            <div class="second-box">
+                <p>Edit-Task</p>
+                <textarea placeholder="Describe what you will do today..."></textarea>
+                <button class="Done">Done</button>
+            </div>
+        </section>
+    </div>
+    <script src="script4.js"></script>
+</body>
+</html>
