@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const addTaskBtn = document.querySelector(".add-task");
     const addBtn = document.querySelector(".add");
     const removeBtn = document.querySelector(".remove");
-    const editBtns = document.querySelectorAll(".edit");
     const doneBtn = document.querySelector(".Done");
     const logoutBtn = document.querySelector(".logout");
     const firstBox = document.querySelector(".first-box");
@@ -39,13 +38,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 <span class="task-text">${inputField.value}</span>
                 <span class="star">☆</span>
                 <button class="edit">Edit</button>
+                <button class="delete">Delete</button>
             `;
             taskList.appendChild(li);
             inputField.value = "";
             firstBox.style.display = "none";
             attachStarClickEvent(li.querySelector(".star"));
             attachEditClickEvent(li.querySelector(".edit"));
-            updateTaskCounters(); // Update counters after adding a task
+            attachDeleteClickEvent(li.querySelector(".delete"));
+            updateTaskCounters();
         }
     });
 
@@ -53,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
     removeBtn.addEventListener("click", function () {
         if (taskList.lastChild) {
             taskList.removeChild(taskList.lastChild);
-            updateTaskCounters(); // Update counters after removing a task
+            updateTaskCounters();
         }
     });
 
@@ -72,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 taskItem.classList.add("completed");
                 taskItem.style.backgroundColor = "lightblue";
             }
-            updateTaskCounters(); // Update counters when task is marked as completed/incomplete
+            updateTaskCounters();
         });
     }
 
@@ -82,6 +83,15 @@ document.addEventListener("DOMContentLoaded", function () {
             currentEditTask = editBtn.parentElement;
             editTextArea.value = currentEditTask.querySelector(".task-text").textContent;
             secondBox.style.display = "block";
+        });
+    }
+
+    // Attach click event to delete buttons
+    function attachDeleteClickEvent(deleteBtn) {
+        deleteBtn.addEventListener("click", function () {
+            const taskItem = deleteBtn.parentElement;
+            taskItem.remove();
+            updateTaskCounters();
         });
     }
 
@@ -98,10 +108,10 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "index1.html";
     });
 
-    // Initialize existing stars and edit buttons
+    // Initialize existing buttons
     document.querySelectorAll(".star").forEach(attachStarClickEvent);
     document.querySelectorAll(".edit").forEach(attachEditClickEvent);
+    document.querySelectorAll(".delete").forEach(attachDeleteClickEvent); // ✅ Add for existing delete buttons
 
-    // Initial task counters update
     updateTaskCounters();
 });

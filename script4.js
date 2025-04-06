@@ -19,11 +19,10 @@ document.addEventListener("DOMContentLoaded", function () {
     function loadTasks() {
         taskList.innerHTML = "";
         const tasks = JSON.parse(localStorage.getItem(storageKey)) || [];
-        
         tasks.forEach(task => addTaskToDOM(task.text, task.completed));
     }
 
-    // Save tasks to localStorage without deleting existing ones
+    // Save tasks to localStorage
     function saveTasks() {
         const tasks = [...taskList.children].map(li => ({
             text: li.querySelector(".task-text").textContent,
@@ -41,10 +40,12 @@ document.addEventListener("DOMContentLoaded", function () {
             <span class="task-text">${text}</span>
             <span class="star ${completed ? 'green' : ''}">${completed ? '★' : '☆'}</span>
             <button class="edit">Edit</button>
+            <button class="delete">Delete</button>
         `;
         taskList.appendChild(li);
         attachStarClickEvent(li.querySelector(".star"));
         attachEditClickEvent(li.querySelector(".edit"));
+        attachDeleteClickEvent(li.querySelector(".delete"));
     }
 
     // Add new task
@@ -65,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Move task between pages
+    // Star click to move task
     function attachStarClickEvent(star) {
         star.addEventListener("click", function () {
             const taskItem = star.parentElement;
@@ -73,25 +74,23 @@ document.addEventListener("DOMContentLoaded", function () {
             const moveToStorage = star.classList.contains("green") ? "laterTasks" : "completedTasks";
             const removeFromStorage = moveToStorage === "completedTasks" ? "laterTasks" : "completedTasks";
 
-            // Change appearance
             if (star.classList.contains("green")) {
                 star.classList.remove("green");
                 star.textContent = "☆";
-                taskItem.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
                 taskItem.classList.remove("completed");
+                taskItem.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
             } else {
                 star.classList.add("green");
                 star.textContent = "★";
-                taskItem.style.backgroundColor = "lightblue";
                 taskItem.classList.add("completed");
+                taskItem.style.backgroundColor = "lightblue";
             }
 
-            // Move task between lists
             moveTask(taskText, moveToStorage, removeFromStorage);
         });
     }
 
-    // Move task between pages without deleting other tasks
+    // Move task between storages
     function moveTask(taskText, addToStorage, removeFromStorage) {
         let addList = JSON.parse(localStorage.getItem(addToStorage)) || [];
         let removeList = JSON.parse(localStorage.getItem(removeFromStorage)) || [];
@@ -100,17 +99,16 @@ document.addEventListener("DOMContentLoaded", function () {
         removeList = removeList.filter(task => task.text !== taskText);
         localStorage.setItem(removeFromStorage, JSON.stringify(removeList));
 
-        // Add task to new list only if it doesn't already exist
+        // Add task to new list
         if (!addList.some(task => task.text === taskText)) {
             addList.push({ text: taskText, completed: addToStorage === "completedTasks" });
             localStorage.setItem(addToStorage, JSON.stringify(addList));
         }
 
-        // Reload page to reflect changes
         window.location.href = addToStorage === "completedTasks" ? "index4.html" : "index5.html";
     }
 
-    // Edit task event
+    // Edit task
     function attachEditClickEvent(editBtn) {
         editBtn.addEventListener("click", function () {
             currentEditTask = editBtn.parentElement;
@@ -128,11 +126,20 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Logout event
+    // Delete task
+    function attachDeleteClickEvent(deleteBtn) {
+        deleteBtn.addEventListener("click", function () {
+            const taskItem = deleteBtn.parentElement;
+            taskItem.remove();
+            saveTasks();
+        });
+    }
+
+    // Logout
     logoutBtn.addEventListener("click", function () {
         window.location.href = "index1.html";
     });
 
-    // Load stored tasks on page load
+    // Load tasks on page load
     loadTasks();
 });

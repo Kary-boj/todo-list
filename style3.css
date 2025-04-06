@@ -63,12 +63,14 @@ button.decoration:hover {
 }
 
 /* Red Button */
-button.remove {
+button.remove,
+button.delete {
     background-color: red;
     color: white;
 }
 
-button.remove:hover {
+button.remove:hover,
+button.delete:hover {
     background-color: darkred;
 }
 
